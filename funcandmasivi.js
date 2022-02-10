@@ -32,3 +32,22 @@ for(let i=0; i< myarray1.length; i=i+1) {
 for(let i=0; i< myarray2.length; i=i+1) {
     console.log(myarray2[i])
 }
+
+function sumFunc2() {
+    return myarray1[0] + myarray2[0];
+}
+console.log(sumFunc2())
+
+function minFunc2() {
+    return myarray1[0] - myarray2[0];
+}
+console.log(minFunc2())
+function umnFunc2() {
+    return myarray1[0] * myarray2[0];
+}
+console.log(umnFunc2())
+
+function delFunc2() {
+    return myarray1[0] / myarray2[0];
+}
+console.log(delFunc2())
