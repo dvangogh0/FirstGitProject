@@ -9,7 +9,7 @@ var CeramicMug = /** @class */ (function () {
         this.material = MATERIALS.CERAMIC;
     }
     CeramicMug.prototype["break"] = function () {
-        console.log("Broke s ${this.material} mug");
+        console.log("Broke a ".concat(this.material, " mug"));
     };
     return CeramicMug;
 }());
@@ -18,7 +18,7 @@ var PlasticMug = /** @class */ (function () {
         this.material = MATERIALS.PLASTIC;
     }
     PlasticMug.prototype["break"] = function () {
-        console.log("Broke s ${this.material} mug");
+        console.log("Broke a ".concat(this.material, " mug"));
     };
     return PlasticMug;
 }());
@@ -27,15 +27,15 @@ var GlassMug = /** @class */ (function () {
         this.material = MATERIALS.GLASS;
     }
     GlassMug.prototype["break"] = function () {
-        console.log("Broke s ${this.material} mug");
+        console.log("Broke a ".concat(this.material, " mug"));
     };
     return GlassMug;
 }());
-var items = [new CeramicMug(), new PlasticMug(), new GlassMug()];
-items.forEach(function (e) {
+var mugs = [new CeramicMug(), new PlasticMug(), new GlassMug()];
+mugs.forEach(function (e) {
     e["break"]();
 });
-var glassMug = items.find(function (e) { return e.material === MATERIALS.GLASS; });
-glassMug["break"]();
-var materialsMap = items.map(function (e) { return e.material; });
+var found_glass = mugs.find(function (e) { return e.material === MATERIALS.GLASS; });
+found_glass["break"]();
+var materialsMap = mugs.map(function (e) { return e.material; });
 console.log(materialsMap);
