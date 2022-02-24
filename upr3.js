@@ -1,32 +1,41 @@
-var MATERIAL;
-(function (MATERIAL) {
-    MATERIAL["GLASS"] = "glass";
-    MATERIAL["PLASTIC"] = "plastic";
-    MATERIAL["CERAMIC"] = "ceramic";
-})(MATERIAL || (MATERIAL = {}));
-var GlassMug = /** @class */ (function () {
-    function GlassMug() {
+var MATERIALS;
+(function (MATERIALS) {
+    MATERIALS["GLASS"] = "Glass";
+    MATERIALS["PLASTIC"] = "Plastic";
+    MATERIALS["CERAMIC"] = "Ceramic";
+})(MATERIALS || (MATERIALS = {}));
+var CeramicMug = /** @class */ (function () {
+    function CeramicMug() {
+        this.material = MATERIALS.CERAMIC;
     }
-    GlassMug.prototype["break"] = function () {
-        return "Material is Glass";
+    CeramicMug.prototype["break"] = function () {
+        console.log("Broke s ${this.material} mug");
     };
-    return GlassMug;
+    return CeramicMug;
 }());
 var PlasticMug = /** @class */ (function () {
     function PlasticMug() {
+        this.material = MATERIALS.PLASTIC;
     }
     PlasticMug.prototype["break"] = function () {
-        return "Material is Plastic";
+        console.log("Broke s ${this.material} mug");
     };
     return PlasticMug;
 }());
-var CeramicMuc = /** @class */ (function () {
-    function CeramicMuc() {
+var GlassMug = /** @class */ (function () {
+    function GlassMug() {
+        this.material = MATERIALS.GLASS;
     }
-    CeramicMuc.prototype["break"] = function () {
-        return "Material is Ceramic";
+    GlassMug.prototype["break"] = function () {
+        console.log("Broke s ${this.material} mug");
     };
-    return CeramicMuc;
+    return GlassMug;
 }());
-var glass = new GlassMug();
-console.log(glass["break"]());
+var items = [new CeramicMug(), new PlasticMug(), new GlassMug()];
+items.forEach(function (e) {
+    e["break"]();
+});
+var glassMug = items.find(function (e) { return e.material === MATERIALS.GLASS; });
+glassMug["break"]();
+var materialsMap = items.map(function (e) { return e.material; });
+console.log(materialsMap);

@@ -1,48 +1,63 @@
-enum MATERIAL {
-    GLASS="glass",
-    PLASTIC="plastic",
-    CERAMIC="ceramic"
+enum MATERIALS{
+
+    GLASS = "Glass",
+    PLASTIC = "Plastic",
+    CERAMIC = "Ceramic"
 }
 
-interface Breakable {
-    material:MATERIAL,
-    break: () => {}
-}
+interface Breakable{
 
-class GlassMug implements Breakable{
-    public material:MATERIAL.GLASS;
-    constructor () {
-    }
-    break(): string {
-        return "Material is Glass";
-    }
-}
-class PlasticMug implements Breakable{
-    public material: MATERIAL.PLASTIC;
-    constructor() {
-    }
-    break(): string {
-        return "Material is Plastic";
-    }
+    material: MATERIALS;
+    break(): void;
+
 }
 
 class CeramicMug implements Breakable{
-    public material: MATERIAL.CERAMIC;
-    constructor() {
+
+    material: MATERIALS;
+    constructor(){
+        this.material = MATERIALS.CERAMIC;
     }
-    break(): string {
-        return "Material is Ceramic";
+    break() {
+        console.log("Broke s ${this.material} mug")
     }
 }
 
-const glass = new GlassMug();
-console.log(glass.break());
+class PlasticMug implements Breakable{
+    material: MATERIALS ;
+    constructor(){
+        this.material = MATERIALS.PLASTIC;
+    }
+    break() {
+        console.log("Broke s ${this.material} mug")
+    }
+}
 
-const plastic = new PlasticMug();
-console.log(plastic.break());
+class GlassMug implements Breakable{
+    material: MATERIALS ;
+    constructor(){
+        this.material = MATERIALS.GLASS;
+    }
 
-const ceramic = new CeramicMug();
-console.log(ceramic.break());
+    break() {
 
-let materialsMugs = [glass, plastic,ceramic]
+        console.log("Broke s ${this.material} mug")
+    }
 
+
+}
+
+
+
+let items = [new CeramicMug(), new PlasticMug(), new GlassMug()];
+
+items.forEach(e => {
+    e.break();
+
+});
+
+const glassMug = items.find(e => e.material === MATERIALS.GLASS)
+glassMug.break();
+
+const materialsMap = items.map(e => e.material);
+console.log(materialsMap);
